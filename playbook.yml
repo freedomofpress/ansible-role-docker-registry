@@ -1,0 +1,5 @@
+---
+- hosts: all
+  roles:
+    - role: marklee77.docker
+    - role: ansible-role-docker-registry
