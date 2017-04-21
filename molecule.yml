@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+vagrant:
+  platforms:
+    - name: jessie64
+      box: debian/jessie64
+
+    - name: trusty64
+      box: ubuntu/trusty64
+
+    - name: xenial64
+      box: ubuntu/xenial64
+
+  providers:
+    - name: libvirt
+      type: libvirt
+
+    - name: virtualbox
+      type: virtualbox
+
+  instances:
+    - name: ansible-role-docker-registry
+      raw_config_args:
+        - "vm.network 'forwarded_port', guest: 5000, host: 5000"
+        - "vm.synced_folder '.', '/vagrant', disabled: true"
