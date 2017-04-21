@@ -1,0 +1,6 @@
+---
+# Directory for storing pushed images on registry host.
+docker_registry_data_directory: /var/www/docker-registry
+
+# Port to expose to host machine, for use in reverse proxy.
+docker_registry_expose_port: 5000
