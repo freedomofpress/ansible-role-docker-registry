@@ -1,5 +1,12 @@
 ---
 - hosts: all
+  pre_tasks:
+    - name: Update apt packages
+      apt:
+        upgrade: dist
+        update_cache: yes
+        cache_valid_time: 3600
+
   roles:
     - role: marklee77.docker
     - role: ansible-role-docker-registry

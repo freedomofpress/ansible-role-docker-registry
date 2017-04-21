@@ -11,3 +11,10 @@ def test_docker_registry_data_direcotry(File):
     assert f.user == 'root'
     assert f.group == 'root'
     assert oct(f.mode) == "0755"
+
+
+# Not configured by the role, but required, and listed in the testing
+# dependencies.
+def test_docker_is_installed(Package):
+    p = Package("docker")
+    assert p.is_installed
