@@ -9,14 +9,14 @@
     mode: "0755"
 
 - name: Run docker registry container
-  docker:
+  docker_container:
     expose: "{{ docker_registry_expose_port }}"
     image: "registry:2"
     name: registry
     ports: "{{ docker_registry_expose_port }}:{{ docker_registry_expose_port }}"
     volumes:
       - "{{ docker_registry_data_directory }}:{{ docker_registry_data_directory }}"
-    pull: missing
+    pull: true
     restart_policy: unless-stopped
     # "reloaded" does not appear to be idempotent
     state: started
