@@ -79,10 +79,10 @@ This role uses [Molecule] and [Testinfra] for testing. To test:
 pip install -r requirements.txt
 ```
 
-```
 Use Self-signed SSL certificate
 -------------------------------
 
+```
 Instruct every Docker daemon to trust that certificate. The way to do this depends on your OS.
 
 Linux: Copy the ca.crt file to /etc/docker/certs.d/myregistrydomain.com:5000/ca.crt on every Docker host. You do not need to restart Docker.
