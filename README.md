@@ -7,7 +7,7 @@ Installs and configures the official [Docker registry] container.
 Requirements
 ------------
 
-You will need to configure a reverse proxy for HTTPS with basic auth.
+You will need to configure a reverse proxy (e.g. nginx) for HTTPS. The default auth is admin/Passw0rd for registry.
 
 Role Variables
 --------------
