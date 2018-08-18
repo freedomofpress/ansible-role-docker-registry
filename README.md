@@ -7,7 +7,7 @@ Installs and configures the official [Docker registry] container.
 Requirements
 ------------
 
-You will need to configure a reverse proxy for HTTPS with basic auth.
+You will need to configure a reverse proxy (e.g. nginx) for HTTPS. The default auth is admin/Passw0rd for registry.
 
 Role Variables
 --------------
@@ -15,6 +15,7 @@ Role Variables
 ```yaml
 # Directory for storing pushed images on registry host.
 docker_registry_data_directory: /var/www/docker-registry
+docker_registry_auth_path: /auth/htpasswd
 
 # Port to expose to host machine, for use in reverse proxy.
 docker_registry_expose_port: 5000
@@ -23,8 +24,10 @@ docker_registry_expose_port: 5000
 Dependencies
 ------------
 
-  * Docker container support (e.g. marklee77.docker)
-  * HTTPS reverse proxy (e.g. jdauphant.nginx)
+  * Docker container support ( geerlingguy.docker)
+  * HTTPS reverse proxy (jdauphant.nginx)
+  * Self Signed SSL (jdauphant.ssl-certs)
+  * EPEL Repo (geerlingguy.repo-epel)
 
 Example Playbook
 ----------------
@@ -74,6 +77,16 @@ This role uses [Molecule] and [Testinfra] for testing. To test:
 
 ```
 pip install -r requirements.txt
+```
+
+Use Self-signed SSL certificate
+-------------------------------
+
+```
+Instruct every Docker daemon to trust that certificate. The way to do this depends on your OS.
+
+Linux: Copy the ca.crt file to /etc/docker/certs.d/myregistrydomain.com:5000/ca.crt on every Docker host. You do not need to restart Docker.
+
 ```
 
 License

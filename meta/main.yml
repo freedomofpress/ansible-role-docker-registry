@@ -5,7 +5,7 @@ galaxy_info:
   description: Configure Docker registry container for serving container images.
   company: Freedom of the Press Foundation (@freedomofpress)
   license: GPLv2
-  min_ansible_version: 2.3
+  min_ansible_version: 2.4
   platforms:
   - name: Debian
     versions:
@@ -14,4 +14,8 @@ galaxy_info:
     - cloud
     - packaging
     - system
-dependencies: []
+  dependencies:
+    - { role: geerlingguy.repo-epel }
+    - { role: geerlingguy.docker }           
+    - { role: jdauphant.ssl-certs }
+    - { role: jdauphant.nginx }

@@ -4,3 +4,6 @@ docker_registry_data_directory: /var/www/docker-registry
 
 # Port to expose to host machine, for use in reverse proxy.
 docker_registry_expose_port: 5000
+
+# htpasswd path
+docker_registry_auth_path: /auth/htpasswd
